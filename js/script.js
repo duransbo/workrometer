@@ -41,8 +41,8 @@ class Workrometer {
 	constructor(salvo) {
 		salvo = JSON.parse(salvo);
 		
-		this.id = salvo.id || 0;
-		this.chamados = salvo.chamados || [];
+		this.id = salvo ? salvo.id : 0;
+		this.chamados = salvo ? salvo.chamados : [];
 		this.rodando = false;
 		Display.lista(this.chamados);
 		this.salve();
