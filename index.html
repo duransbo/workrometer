@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pr-br">
+<html manifest="workrometer.appcache" lang="pr-br">
 	<head>
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,11 +14,10 @@
 		</header>
 		<div class="controle">
 			<button class="button -icon" onclick="controle.adicione()">&#xf067;</button>
-			<!-- <button class="button -icon">&#xf04c;</button> -->
+			<button class="button -icon" onclick="controle.pare()">&#xf04c;</button>
 		</div>
 		<div id="rodando" class="rodando"></div>
-		<div id="chamados"></div>
-		<script src="js/generic.js"></script>
+		<div id="chamados" class="chamados"></div>
 		<script src="js/script.js"></script>
 	</body>
 </html>

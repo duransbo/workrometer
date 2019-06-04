@@ -47,18 +47,14 @@ p {
 	background-color: #b1d34b;
 	justify-content: space-between;
 }
-.button {
-	width: 100%/* 45% */;
+.controle .button {
+	width: 45%;
 	background-color: #00995d;
 	color: #fff;
-	font-size: 2.0rem;
+	font-size: 2rem;
 	border: none;
 }
 
-.rodando {
-	background-color: #005F54;
-	color: #fff;
-}
 
 .chamado {
 	width: 80%;
@@ -67,7 +63,27 @@ p {
 .chamado .titulo {
 	width: 100%;
 	padding: 5px;
+	height: 3.5rem;
+	box-sizing: border-box;
 }
 .chamado .intervalo {
 	margin-top: 5px;
+}
+
+.rodando {
+	background-color: #005F54;
+	color: #fff;
+}
+
+
+.chamados .titulo {
+	width: 80%;
+}
+.chamados .button {
+	width: 10%;
+	height: 3.5rem;
+	background-color: #00995d;
+	color: #fff;
+	font-size: 1rem;
+	border: none;
 }

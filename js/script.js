@@ -18,10 +18,10 @@ class Horario {
 }
 
 class Chamado {
-	constructor(pId) {
+	constructor(pId, pTitulo = '', pIntervalo = []) {
 		this.id = pId;
-		this.titulo = '';
-		this.intervalos = [];
+		this.titulo = pTitulo;
+		this.intervalos = pIntervalo;
 	}
 	
 	inicie() {
@@ -34,16 +34,25 @@ class Chamado {
 	
 	pare() {
 		this.intervalos[0].fim = Horario.agora();
+		Display.pare();
 	}
 }
 
 class Workrometer {
-	constructor(salvo) {
-		salvo = JSON.parse(salvo);
-		
-		this.id = salvo ? salvo.id : 0;
-		this.chamados = salvo ? salvo.chamados : [];
+	constructor(salvo) {		
+		this.id = 0;
 		this.rodando = false;
+		let chamados = [];
+		
+		salvo = JSON.parse(salvo);
+		if (salvo) {	
+			this.id = salvo.id;
+			salvo.chamados.forEach(function (chamado) {
+				chamados.push(new Chamado(chamado.id, chamado.titulo, chamado.intervalos));
+			});
+		}
+		
+		this.chamados = chamados;
 		Display.lista(this.chamados);
 		this.salve();
 	}
@@ -51,7 +60,12 @@ class Workrometer {
 	adicione() {
 		this.chamados.push(new Chamado(++this.id));
 		this.inicie(this.id);
-		this.salve();
+	}
+	
+	remove(pNumChamado) {
+		this.chamados = this.chamados.filter(pChamado => pChamado.id !== pNumChamado);
+		Display.lista(this.chamados);
+		this.salve();		
 	}
 	
 	inicie(pNumChamado) {
@@ -64,8 +78,15 @@ class Workrometer {
 		this.salve();
 	}
 	
+	pare() {
+		if (this.rodando) {
+			this.rodando.pare();
+		}
+		Display.lista(this.chamados);
+		this.salve();	
+	}
+	
 	mude(pNumChamado, pTitulo) {
-		console.log(pNumChamado, pTitulo);
 		this.chamados.find(pChamado => pChamado.id === pNumChamado).titulo = pTitulo.value;
 		Display.lista(this.chamados);
 		this.salve();
@@ -95,6 +116,10 @@ class Display {
 			'</div>';
 	}
 	
+	static pare() {
+		document.getElementById('rodando').innerHTML = '';
+	}
+	
 	static lista(pChamados) {
 		let show = document.getElementById('chamados');
 		show.innerHTML = '';
@@ -107,7 +132,9 @@ class Display {
 			chamado.intervalos.forEach(html);
 			show.innerHTML +=
 				'<div class="chamado">' +
-					'<input type="text" class="titulo" value="' + chamado.titulo + '" readonly/>' +
+					'<button class="button -icon" onclick="controle.inicie(' + chamado.id + ')">&#xf04b;</button>' +
+					'<input type="text" class="titulo" value="' + chamado.titulo + '" onchange="controle.mude(' + chamado.id + ', this)"/>' +
+					'<button class="button -icon" onclick="controle.remove(' + chamado.id + ')">&#xf068;</button>' +
 					'<ul class="intervalos">' + intervalos + '</ul>' +
 				'</div>'
 		}
