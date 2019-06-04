@@ -1,0 +1,73 @@
+@font-face {
+	font-family: 'Icon';
+	src: url('../font/fontawesome-webfont.eot?v=4.3.0');
+	src: url('../font/fontawesome-webfont.eot?#iefix&v=4.3.0') format('embedded-opentype'), url('../font/fontawesome-webfont.woff2?v=4.3.0') format('woff2'), url('../font/fontawesome-webfont.woff?v=4.3.0') format('woff'), url('../font/fontawesome-webfont.ttf?v=4.3.0') format('truetype'), url('../font/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg');
+}
+@font-face {
+	font-family: 'Inconsolata';
+	src: url('../font/Inconsolata.otf');
+}
+
+
+
+.-container {
+	padding: 50px 5%;
+	justify-content: space-between;
+}
+.-icon {
+	font-family: 'Icon';
+	text-align: center;
+}
+
+
+
+body {
+	font-size: 1.8rem;
+	font-family: 'Inconsolata';
+}
+h1 {
+	letter-spacing: 0.2rem;
+	text-transform: uppercase;
+}
+p {
+	width: 100%;
+	line-height: 150%;
+}
+
+
+
+.header {
+	justify-content: center;
+	background-color: #00995d;
+	color: #fff;
+}
+
+.controle {
+	padding: 10px 10%;
+	background-color: #b1d34b;
+	justify-content: space-between;
+}
+.button {
+	width: 100%/* 45% */;
+	background-color: #00995d;
+	color: #fff;
+	font-size: 2.0rem;
+	border: none;
+}
+
+.rodando {
+	background-color: #005F54;
+	color: #fff;
+}
+
+.chamado {
+	width: 80%;
+	margin: 20px 10%;
+}
+.chamado .titulo {
+	width: 100%;
+	padding: 5px;
+}
+.chamado .intervalo {
+	margin-top: 5px;
+}
