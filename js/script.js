@@ -82,6 +82,7 @@ class Workrometer {
 		if (this.rodando) {
 			this.rodando.pare();
 		}
+		this.rodando = false;
 		Display.lista(this.chamados);
 		this.salve();	
 	}
